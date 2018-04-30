@@ -7,20 +7,10 @@ import PropTypes from 'prop-types'
 
 import styles from './styles.css'
 
-export default class ExampleComponent extends Component {
-  static propTypes = {
-    text: PropTypes.string
-  }
-
-  render() {
-    const {
-      text
-    } = this.props
-
-    return (
-      <div className={styles.test}>
-        Example Component: {text}
-      </div>
-    )
-  }
+export const createComp = render => {
+  const comp = Component;
+  comp.prototype.render = () => render;
+  return comp;
 }
+
+export createSailsClient from './sails-client';
